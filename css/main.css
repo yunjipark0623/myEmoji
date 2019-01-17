@@ -1,0 +1,26 @@
+* {
+  box-sizing: border-box;
+  margin: auto;
+}
+
+.navbar {
+  background-color: tomato;
+  padding: 10px;
+}
+
+.items {
+  flex: 1px;
+
+}
+
+.items > li {
+  display: flex;
+}
+
+ul {
+  padding: 0;
+}
+
+li {
+  list-style: none;
+}
