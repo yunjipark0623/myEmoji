@@ -8,15 +8,6 @@
   padding: 10px;
 }
 
-.items {
-  flex: 1px;
-
-}
-
-.items > li {
-  display: flex;
-}
-
 ul {
   padding: 0;
 }
