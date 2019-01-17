@@ -1,11 +1,11 @@
 from flask import Flask, render_template, request, send_file
-from flask_uploads import UploadSet, configure_uploads, IMAGES
-from typing import Any
+#from flask_uploads import UploadSet, configure_uploads, IMAGES
+#from typing import Any
 import os
 from flask_cors import CORS
-from flask import jsonify
-import json
-import urllib.request
+# from flask import jsonify
+# import json
+# import urllib.request
 
 app = Flask(__name__, template_folder='templates')
 CORS(app)

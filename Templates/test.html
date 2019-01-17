@@ -1,54 +1,60 @@
 <!DOCTYPE html>
 <html>
-<head>
-<meta charset="utf-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-<meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width"/>
-<title>Login Demo - Kakao JavaScript SDK</title>
-<script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
+  <head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width"/>
+    <title>Login Demo - Kakao JavaScript SDK</title>
+    <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
+  </head>
+  <body>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">[카카오 로그인] 기본 button</h3>
+        <span id="profile">
+        </span>
+      </div>
+      <div class="panel-body">
+        <a id="kakao-login-btn"></a>
+        <a href="http://developers.kakao.com/logout"></a>
+        <p id="kakao-login-result"></p>
+        <a id="kakao-link-btn" href="javascript:;">
+          <img src="//developers.kakao.com/assets/img/about/logos/kakaolink/kakaolink_btn_medium.png"/>
+        </a>
+      </div>
+    </div>
+    <script type='text/javascript'>
+      //<![CDATA[
+      // 사용할 앱의 JavaScript 키를 설정해 주세요.
+      Kakao.init('a88b31cb703decbce4176cdf7dc28bd5');
+      // 카카오 로그인 버튼을 생성합니다.
+      Kakao.Auth.createLoginButton({
+    	  container: '#kakao-login-btn',
+    	  success: function(authObj) {
+          document.getElementById('kakao-login-result').innerText = 'success: ' + JSON.stringify(authObj);
+    	  },
+    	  fail: function(err) {
+    		  document.getElementById('kakao-login-result').innerText = 'fail: ' + JSON.stringify(err);
+    	  }
+      });
 
-</head>
-<body>
-<div class="panel panel-default">
-<div class="panel-heading">
-<h3 class="panel-title">
-[카카오 로그인] 기본 button
-</h3>
-</div>
-<div class="panel-body">
-<a id="kakao-login-btn"></a>
-<a href="http://developers.kakao.com/logout"></a>
-<p id="kakao-login-result"></p>
-<a id="kakao-link-btn" href="javascript:;">
-<img src="//developers.kakao.com/assets/img/about/logos/kakaolink/kakaolink_btn_medium.png"/>
-</a>
-</div>
-</div>
-<script type='text/javascript'>
-  //<![CDATA[
-    // 사용할 앱의 JavaScript 키를 설정해 주세요.
-    Kakao.init('a88b31cb703decbce4176cdf7dc28bd5');
-    // 카카오 로그인 버튼을 생성합니다.
-    Kakao.Auth.createLoginButton({
-    	container: '#kakao-login-btn',
-    	success: function(authObj) {
-    		document.getElementById('kakao-login-result').innerText = 'success: ' + JSON.stringify(authObj);
-    	},
-    	fail: function(err) {
-    		document.getElementById('kakao-login-result').innerText = 'fail: ' + JSON.stringify(err);
-    	}
-    });
+      Kakao.Link.createCustomButton({
+        container: '#kakao-link-btn',
+        templateId: 14380,
+      });
 
-    Kakao.Link.createCustomButton({
-      container: '#kakao-link-btn',
-      templateId: 14380,
-    });
-
-  //]]>
-
-
-
-</script>
-
-</body>
+      Kakao.API.request({
+        url: '/v1/api/talk/profile',
+        success: function(res) {
+          document.getElementById('profile').innerHTML = "<p>"+res.nickName+"</p><img src = \""+res.thumbnailURL+"\">";
+          //res.nickName = 카카오톡 닉네임
+          // res.thumbnailURL = 카카오톡 프사 URL
+        },
+        fail: function(error) {
+          alert(JSON.stringify(error));
+        }
+      });
+    //]]>
+    </script>
+  </body>
 </html>
