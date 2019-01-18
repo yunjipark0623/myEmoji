@@ -11,8 +11,6 @@
     <div class="panel panel-default">
       <div class="panel-heading">
         <h3 class="panel-title">[카카오 로그인] 기본 button</h3>
-        <span id="profile">
-        </span>
       </div>
       <div class="panel-body">
         <a id="kakao-login-btn"></a>
@@ -29,16 +27,13 @@
       Kakao.init('a88b31cb703decbce4176cdf7dc28bd5');
 
       //카카오톡 로그아웃
-      //Kakao.Auth.logout();
+      Kakao.Auth.logout();
 
       // 카카오 로그인 버튼을 생성합니다.
       Kakao.Auth.createLoginButton({
     	  container: '#kakao-login-btn',
     	  success: function(authObj) {
-          document.getElementById('kakao-login-result').innerText = 'success: ' + JSON.stringify(authObj);
-    	  },
-    	  fail: function(err) {
-    		  document.getElementById('kakao-login-result').innerText = 'fail: ' + JSON.stringify(err);
+          loadProfile();
     	  }
       });
 
@@ -47,17 +42,19 @@
         templateId: 14380,
       });
 
-      Kakao.API.request({
-        url: '/v1/api/talk/profile',
-        success: function(res) {
-          document.getElementById('profile').innerHTML = "<p>"+res.nickName+"</p><img src = \""+res.thumbnailURL+"\">";
-          //res.nickName = 카카오톡 닉네임
-          // res.thumbnailURL = 카카오톡 프사 URL
-        },
-        fail: function(error) {
-          alert(JSON.stringify(error));
-        }
-      });
+      function loadProfile() {
+        Kakao.API.request({
+          url: '/v1/api/talk/profile',
+          success: function(res) {
+            document.getElementById('kakao-login-btn').innerHTML = "<p>"+res.nickName+"</p><img src = \""+res.thumbnailURL+"\">";
+            //res.nickName = 카카오톡 닉네임
+            // res.thumbnailURL = 카카오톡 프사 URL
+          },
+          fail: function(error) {
+            alert(JSON.stringify(error));
+          }
+        });
+      }
     //]]>
     </script>
   </body>
