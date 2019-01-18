@@ -1,0 +1,23 @@
+{
+  "name": "myemoji",
+  "version": "1.0.0",
+  "description": "https://ovenapp.io/view/EmFpJxpHtupfKtxr7Ivb4MM5Orjsdq2S/52fzs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yunjipark0623/myEmoji.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/yunjipark0623/myEmoji/issues"
+  },
+  "homepage": "https://github.com/yunjipark0623/myEmoji#readme",
+  "dependencies": {
+    "file-saver": "^2.0.0",
+    "png-js": "^0.1.1"
+  }
+}

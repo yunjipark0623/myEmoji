@@ -19,7 +19,7 @@
   <div class="items">
     <ul>
       <li class="face">FACE</li>
-      <li><img src="images/face1.png" class="face-img"></li>
+      <li><img src="images/face1.png" class="face-img" name="face1" onclick="javascript:addList();"></li>
       <li><img src="images/face2.png" class="face-img"></li>
       <li><img src="images/face3.png" class="face-img"></li>
       <li><img src="images/face4.png" class="face-img"></li>
@@ -73,11 +73,15 @@
   <!-- 캔버스 -->
 
   <div class="canvas">
-    <div class="emoji"></div>
+    <canvas class="canvas">
+      <img src="images/down.jpg" id="downloadImg">
+    </canvas>
   </div>
   <div class="btns">
     <ul>
-      <li><img src=""></li>
+      <li>
+        <a href="https://wallpaperbrowse.com/media/images/3848765-wallpaper-images-download.jpg" download>파일다운</a>
+      </li>
       <li><img src=""></li>
       <li><img src=""></li>
     </ul>
@@ -87,19 +91,19 @@
   <!-- 선택한 아이템들 -->
 
   <div class="selected">
-    <ul>
-      <!-- li태그 js로 innerHTML -->
-      <li class="selected-item">
+    <ul id="list">
+      <!-- <li class="selected-item">
         <img src="images/face1.png">
         <button type="button" class="remove">X</button>
-      </li>
+      </li> -->
     </ul>
   </div>
-
+  <script src="node_modules/file-saver/src/FileSaver.js"></script>
+  <script src="zlib.js"></script>
+  <script src="png.js"></script>
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
   <script src="js/main.js"></script>
 </body>
 </html>
