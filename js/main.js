@@ -9,27 +9,27 @@ function showImg(event) {
   var target = event.target;
   var list = document.querySelector('#list');
   var canvas = document.querySelector('.canvas');
+  var index = target.getAttribute("data-index");
 
 
   console.log(target.name);
   console.log("이미지 삽입");
+  console.log(index);
 
-  var html = `<li class="selected-item">` + `<img src='images/` + target.name + `.png'>` + `<button type="button" class="remove">X</button>`;
-
+  var html = `<li class="selected-item">` + `<img src='images/${target.name}.png' class="list-img">` + `<button type="button" class="remove">X</button>`;
 
   var sketchbook = document.querySelector('#sketchbook');
+    var img = new Image();
+    img.addEventListener('load', function() {
 
-  var img = new Image();
-  img.addEventListener('load', function() {
+    }, false);
+    img.src = `images/${target.name}.png`;
 
-  }, false);
-  img.src = `images/${target.name}.png`;
-
-  if(sketchbook.getContext) {
-    var ctx = sketchbook.getContext('2d');
-    img.onload = function() {
-      ctx.drawImage(img, 0, 0);
-    };
+    if(sketchbook.getContext) {
+      var ctx = sketchbook.getContext('2d');
+      img.onload = function() {
+        ctx.drawImage(img, 0, 0);
+      };
   }
 
   // var emoji = `<canvas class="emoji" width="128px" height="128px"><img src='images/` + target.name + `.png'>`;
@@ -37,10 +37,6 @@ function showImg(event) {
   list.innerHTML += html;
   // canvas.innerHTML += emoji;
 }
-
-
-
-
 
 
 // 이미지 클릭했을 때 list에 추가하는 함수
@@ -54,7 +50,7 @@ function showImg(event) {
 // }
 
 
-// 이미지 삭제 함수
+// list 이미지 삭제 함수
 function remove(event) {
   var currentNode = event.target.parentElement;
   console.log(currentNode.className);
@@ -63,13 +59,17 @@ function remove(event) {
   }
 }
 
+//canvas 이미지 삭제 함수
+function getRidOf(event) {
+
+}
 
 // 파일 다운로드 함수
-function download() {
-  var img = document.querySelector('#downloadImg');
-
-  console.log("img download");
-}
+// function download() {
+//   var img = document.querySelector('#downloadImg');
+//
+//   console.log("img download");
+// }
   // var blob = new Blob([img], {type: "data:down/jpg; base64"});
   //   saveAs(blob, "emoji.png");
   // var blob = new Blob([img], {type:"data:image/jpg;base64"});
