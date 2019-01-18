@@ -16,14 +16,14 @@ function showImg(event) {
   console.log("이미지 삽입");
   console.log(index);
 
-  var html = `<li class="selected-item">` + `<img src='images/${target.name}.png' class="list-img">` + `<button type="button" class="remove">X</button>`;
+  var html = `<li class="selected-item">` + `<img src='static/images/${target.name}.png' class="list-img">` + `<button type="button" class="remove">X</button>`;
 
   var sketchbook = document.querySelector('#sketchbook');
     var img = new Image();
     img.addEventListener('load', function() {
 
     }, false);
-    img.src = `images/${target.name}.png`;
+    img.src = `static/images/${target.name}.png`;
 
     if(sketchbook.getContext) {
       var ctx = sketchbook.getContext('2d');

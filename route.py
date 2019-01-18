@@ -14,6 +14,10 @@ CORS(app)
 def index():
     return render_template("index.html")
 
+@app.route('/main', methods=["GET", "POST"])
+def main():
+    return render_template("main.html")
+
 
 if __name__ == '__main__':
     app.run(debug=True, host="0.0.0.0", port=int(os.getenv('VCAP_APP_PORT', '10000')))

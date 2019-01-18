@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="{{url_for('static', filename='index.css')}}">
+</head>
+<body>
+  <header class="index">
+    <div class="text_area">
+      <div class="intro-text">
+        <div class="intro-heading text-uppercase">당신만의 이모티콘을 만들어보세요</div>
+        <div class="intro-lead-in">이제는 이모티콘도 내마음대로! 여러 아이템을 조합해서 이모티콘을 만들어보세요.</div>
+        <a id="kakao-login-btn"></a>
+        <a href="http://developers.kakao.com/logout"></a>
+        <p id="kakao-login-result"></p>
+      </div>
+    </div>
+    <div class="photo_area"><img src="{{url_for('static', filename='example.jpeg')}}">
+    </div>
+  </header>
+  <script>
+
+    Kakao.init('a88b31cb703decbce4176cdf7dc28bd5');
+
+
+    Kakao.Auth.createLoginButton({
+      container: '#kakao-login-btn',
+      success: function(authObj) {
+        window.location.href= "//127.0.0.1:10000/main"
+        //alert(JSON.stringify(authObj));
+        //loadProfile();
+      },
+      fail: function(err) {
+        alert(JSON.stringify(err));
+      }
+    });
+
+    function loadProfile() {
+      Kakao.API.request({
+        url: '/v1/api/talk/profile',
+        success:function(res) {
+          document.getElementById('btn_login').innerHTML = "<p>"+res.nickName+"</p><img src = \""+res.thumbnailURL+"\">";
+        },
+        fail: function(error) {
+          alert(JSON.stringify(error));
+        }
+      });
+    }
+  </script>
+</body>
+</html>

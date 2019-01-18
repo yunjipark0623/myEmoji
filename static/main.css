@@ -1,0 +1,23 @@
+* {
+  box-sizing: border-box;
+  margin: auto;
+}
+
+.navbar {
+  background-color: tomato;
+  padding: 10px;
+}
+
+ul {
+  padding: 0;
+}
+
+li {
+  list-style: none;
+}
+
+.selected-item {
+  background-color: #eeeeee;
+  width: 100px;
+  height: 40px;
+}
