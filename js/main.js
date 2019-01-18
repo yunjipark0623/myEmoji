@@ -23,7 +23,7 @@ function showImg(event) {
   img.addEventListener('load', function() {
 
   }, false);
-  img.src = `images/` + target.name + `.jpg`;
+  img.src = `images/${target.name}.png`;
 
   if(sketchbook.getContext) {
     var ctx = sketchbook.getContext('2d');
