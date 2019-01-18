@@ -62,6 +62,11 @@ function remove(event) {
   }
 }
 
+function reset(event) {
+  $('#sketchbook').remove();
+  $('.selected-item').remove();
+}
+
 //canvas 이미지 삭제 함수
 function getRidOf(event) {
 
@@ -143,4 +148,5 @@ $('.face-img').on('click', showImg);
 $('.eye-img').on('click', showImg);
 $('.mouth-img').on('click', showImg);
 $('.ac-img').on('click', showImg);
+$('.reset').on('click', reset);
 // $('.face-img').on('click', addList);
