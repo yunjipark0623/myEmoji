@@ -9,14 +9,12 @@ function showImg(event) {
   var target = event.target;
   var list = document.querySelector('#list');
   var canvas = document.querySelector('.canvas');
-  var index = target.getAttribute("data-index");
 
 
   console.log(target.name);
   console.log("이미지 삽입");
-  console.log(index);
 
-  var html = `<li class="selected-item">` + `<img src='images/${target.name}.png' class="list-img">` + `<button type="button" class="remove">X</button>`;
+  var html = `<li class="selected-item">` + `<img src='images/${target.name}.png' class="list-img">` + `<div class="list_name">${target.name}</div><button type="button" class="remove">X</button>`;
 
   var sketchbook = document.querySelector('#sketchbook');
     var img = new Image();
@@ -36,6 +34,11 @@ function showImg(event) {
 
   list.innerHTML += html;
   // canvas.innerHTML += emoji;
+
+  // var list_name = document.querySelector('.list_name');
+  // var lname = target.name;
+  //
+  // list_name.innerHTML += lname;
 }
 
 
